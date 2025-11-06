@@ -49,7 +49,7 @@ Développement d’un mini shell Unix en Python, capable d’être utilisé en m
 |----------|-----------------|
 | 🎯 **Haute (obligatoire – noyau minimal)** | #1, #2, #3, #4, #5 |
 | ✅ **Moyenne (fonctionnalités usuelles d’un shell)** | #6, #7, #8 |
-| ⭐ **Faible (qualité de vie / extras)** | #9, #10 |
+| ⭐ **Faible (extras / confort utilisateur)** | #9, #10, #11, #12, #13 |
 
 ---
 
