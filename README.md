@@ -34,7 +34,7 @@ Développement d’un mini shell Unix en Python, capable d’être utilisé en m
 |----|----------------|-------------|--------------|
 | #6 | Variables | Affectation et expansion : `VAR=val` puis `echo $VAR` | #2 |
 | #7 | Redirections | `>`, `>>`, `<` pour rediriger entrée/sortie | #3 |
-| #8 | Pipes | `cmd1 `|` cmd2` permettant de connecter plusieurs commandes | #3, #7 |
+| #8 | Pipes | `cmd1 \| cmd2` permettant de connecter plusieurs commandes | #3, #7 |
 | #9 | Gestion du background | Exécution d’un programme avec `&` sans bloquer le shell | #3 |
 | #10 | Historique des commandes | Mémoriser commandes précédentes | #1 |
 
