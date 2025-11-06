@@ -6,9 +6,8 @@ Projet de fin de semestre du module "Langage Script" en L3 Informatique parcours
 ## Groupe
 - Nom du groupe : ShellPy
 - Membres :
-  - Prénom Nom – Numéro étudiant
-  - Prénom Nom – Numéro étudiant
-  - Prénom Nom – Numéro étudiant
+  - Laghsal Riwan – 20233810
+  - Mehnana Ilyes – 20234622
 
 ## Sujet
 Développement d’un mini shell Unix en Python, capable d’être utilisé en mode interactif et en mode script, avec support progressif des fonctionnalités essentielles d’un interpréteur de commandes.
