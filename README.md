@@ -4,7 +4,7 @@ Projet de fin de semestre du module "Langage Script" en L3 Informatique parcours
 # Projet Shell Python – Rendu 1 : Noyau minimal et fonctionnalités
 
 ## Groupe
-- Nom du groupe : ShellPy
+- Nom du groupe : D. Xebec
 - Membres :
   - Laghsal Riwan – 20233810
   - Mehnana Ilyes – 20234622
