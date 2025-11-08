@@ -35,7 +35,7 @@ Développement d’un mini shell Unix en Python, capable d’être utilisé en m
 | #6 | Variables | Affectation et expansion : `VAR=val` puis `echo $VAR` | #2 |
 | #7 | Redirections | `>`, `>>`, `<` pour rediriger entrée/sortie | #3 |
 | #8 | Pipes | `cmd1 \| cmd2` permettant de connecter plusieurs commandes | #3, #7 |
-| #9 | Gestion du background | Exécution d’un programme avec `&` sans bloquer le shell | #3 |
+| #9 | Gestion du background | Exécution d’un programme avec `&` sans bloquer le shell (usage de `fork()`) | #3 |
 | #10 | Historique navigable des commandes | Mémoriser commandes précédentes et naviguer à l'aide des flèches directionelles  | #1 |
 | #11 | Bannière ShellPy + clear screen | Au lancement, l’écran est nettoyé et une bannière ASCII est affichée | Aucun |
 | #12 | Invite de commande personnalisée | Affichage de `ShellPy:/chemin >` en couleur au lieu de `$` | #1 |
