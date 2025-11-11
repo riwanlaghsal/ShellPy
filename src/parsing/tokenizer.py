@@ -1,4 +1,4 @@
-def parse(line):
+def tokenize(line):
     line = line.strip()
     tokens = []
     current = ""
@@ -64,5 +64,5 @@ def parse(line):
 
 
 
-# line = "echo ""bonjour"" >> test.txt   "
-# print(parse(line))
+line = "echo ""bonjour"" >> test.txt   "
+print(tokenize(line))
