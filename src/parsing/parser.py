@@ -20,9 +20,15 @@ def parse_simple(tokens):
     while i < len(tokens):
         token = tokens[i]
 
-        if token in [">", ">>"]:
+        if token == ">":
             filename = tokens[i+1]
             simple_cmd["stdout"] = {"file": filename, "mode": "w"}
+            i += 2
+            continue
+
+        if token == ">>":
+            filename = tokens[i+1]
+            simple_cmd["stdout"] = {"file": filename, "mode": "a"}
             i += 2
             continue
 
@@ -36,14 +42,49 @@ def parse_simple(tokens):
         i += 1
     return simple_cmd
 
+def split_pipe(tokens):
+    segments = []
+    current = []
+
+    for token in tokens:
+        if token == "|":
+            segments.append(current)
+            current = []
+        else:
+            current.append(token)
+    if current:
+        segments.append(current)
+    return segments
+
+def parse_pipeline(tokens):
+    pipeline_cmd = {
+        "type": "pipeline",
+        "commands": [],
+        "background": False
+    }
+
+    if tokens and tokens[-1] == "&":
+        pipeline_cmd["background"] = True
+        tokens = tokens[:-1]
+
+    splited_tokens = split_pipe(tokens)
+    for segment in splited_tokens:
+        pipeline_cmd["commands"].append(parse_simple(segment))
+
+    return pipeline_cmd
+
 
 def parse(tokens):
-    return parse_simple(tokens)
+    if "|" not in tokens:
+        return parse_simple(tokens)
+    return 0
 
 
-line = "echo bonjour < salut.sh &"
+line = "echo bonjour | grep salam | caca"
 tokens = tokenize(line)
-print(parse(tokens))
+# print(parse(tokens))
+
+print(parse_pipeline(tokens))
 
 
 

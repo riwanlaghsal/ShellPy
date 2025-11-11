@@ -65,4 +65,4 @@ def tokenize(line):
 
 
 line = "echo ""bonjour"" >> test.txt   "
-print(tokenize(line))
+# print(tokenize(line))
