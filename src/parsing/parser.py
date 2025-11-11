@@ -75,16 +75,17 @@ def parse_pipeline(tokens):
 
 
 def parse(tokens):
-    if "|" not in tokens:
+    if "|" in tokens:
+        return parse_pipeline(tokens)
+    else:
         return parse_simple(tokens)
-    return 0
 
 
 line = "echo bonjour | grep salam | caca"
 tokens = tokenize(line)
 # print(parse(tokens))
 
-print(parse_pipeline(tokens))
+print(parse(tokens))
 
 
 
