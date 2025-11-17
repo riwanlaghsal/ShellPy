@@ -52,3 +52,46 @@ Développement d’un mini shell Unix en Python, capable d’être utilisé en m
 
 ---
 
+## Projet ShellPy – Rendu 2 : Briques logicielles envisagées
+
+### Noyau minimal
+
+1. **Lecture d'une ligne de commande – Parsing basique**  
+   - `builtins` – Pour utiliser les fonctions `strip` et `split` simplement.
+
+2. **Exécution de programmes externes**  
+   - `subprocess` – Permet d’exécuter des commandes systèmes externes.
+
+3. **Commandes internes de base**  
+   - `os`, `sys` – Pour naviguer dans les dossiers (`cd`) et gérer l’environnement.
+
+---
+
+### Fonctionnalités supplémentaires
+
+4. **Variables (`VAR=val`, `$VAR`)**  
+   - `os` – Pour accéder et modifier les variables d’environnement.
+
+5. **Redirections (`>`, `>>`, `<`)**  
+   - `subprocess`, `os` – Pour rediriger les entrées/sorties de fichiers.
+
+6. **Pipes (`|`)**  
+   - `subprocess` – Pour chaîner plusieurs processus avec des flux de données.
+
+7. **Exécution en arrière-plan (`&`)**  
+   - `subprocess` – Pour lancer un processus sans attendre son achèvement.
+
+8. **Mode script**  
+   - `os`, `sys` – Pour lire et exécuter un fichier ligne par ligne.
+
+9. **Commande `help`**  
+   - `builtins` – Pour afficher un texte d’aide en interne simplement.
+
+10. **Historique avec les flèches**  
+   - `readline` *(sous Linux)* – Pour naviguer dans l’historique des commandes.
+
+11. **Bannière ASCII + Clear screen**  
+   - `os` – Pour effacer l’écran avec `clear` et afficher une bannière.
+
+12. **Invite personnalisée (`ShellPy:/chemin >`)**  
+   - `os` – Pour afficher le répertoire courant dans le prompt.
