@@ -57,13 +57,13 @@ Développement d’un mini shell Unix en Python, capable d’être utilisé en m
 ### Noyau minimal
 
 1. **Lecture d'une ligne de commande – Parsing basique**  
-   - `builtins` – Pour utiliser les fonctions `strip` et `split` simplement.
+   - `builtins & shlex` – Pour utiliser les fonctions `strip` et `shlex.split` simplement.
 
 2. **Exécution de programmes externes**  
    - `subprocess` – Permet d’exécuter des commandes systèmes externes.
 
 3. **Commandes internes de base**  
-   - `os`, `sys` – Pour naviguer dans les dossiers (`cd`) et gérer l’environnement.
+   - `os`, `sys`, `pathlib` – Pour naviguer dans les dossiers (`cd`) et gérer l’environnement.
 
 ---
 
