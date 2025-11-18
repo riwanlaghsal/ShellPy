@@ -1,4 +1,4 @@
-from ShellPy.src.parsing.tokenizer import tokenize
+from ShellPy.src.parsing.tokenizer import tokenizer
 
 def parse_simple(tokens):
     simple_cmd = {
@@ -82,7 +82,7 @@ def parse(tokens):
 
 
 line = "echo bonjour | grep salam | caca"
-tokens = tokenize(line)
+tokens = tokenizer(line)
 # print(parse(tokens))
 
 print(parse(tokens))
