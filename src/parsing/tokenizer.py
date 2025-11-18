@@ -1,3 +1,6 @@
+import shlex
+import os
+
 def tokenize(line):
     line = line.strip()
     tokens = []
@@ -60,9 +63,11 @@ def tokenize(line):
 
     return tokens
 
+def tokenizer(line):
+    tokens = shlex.split(line)
+    return tokens
 
 
 
-
-line = "echo ""bonjour"" >> test.txt   "
-# print(tokenize(line))
+line = "   \n echo ""$LANG"" >> test.txt   "
+print(tokenizer(line))
