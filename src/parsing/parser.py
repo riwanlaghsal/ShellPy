@@ -80,7 +80,6 @@ def parse(tokens):
     else:
         return parse_simple(tokens)
 
-
 line = "echo bonjour | grep salam | caca"
 tokens = tokenizer(line)
 # print(parse(tokens))
