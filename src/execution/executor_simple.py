@@ -1,8 +1,8 @@
-from ShellPy.src.cmd_built_in.cd import cd
+# from ShellPy.src.cmd_built_in.cd import cd
 import subprocess
-import redir
-from ShellPy.src.execution.redir import handle_redir
+from redir import handle_redir
 import os
+import sys
 
 def get_path(cmd_simple):
     path = str(cmd_simple["args"])
@@ -26,16 +26,19 @@ def exec_simple(cmd_simple):
             cmd_built_in = ["python3", "../cmd_built_in/if.py"] + cmd_simple["args"]
 
     else:
-        proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
-        proc.wait()
+        try:
+            proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
+            proc.wait()
+        except FileNotFoundError:
+            print("Erreur : commande introuvable", file=sys.stderr)
 
 simple_cmd = {
     "type": "command",
-    "cmd": "cd",
-    "args": ["    .."],
-    "stdin": None,
+    "cmd": "cat",
+    "args": [],
+    "stdin": {"file": "test"},
     "stdout": None,
     "background": False
 }
 exec_simple(simple_cmd)
-print(os.getcwd())
+# print(os.getcwd())
