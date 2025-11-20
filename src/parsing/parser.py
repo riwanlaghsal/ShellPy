@@ -34,7 +34,7 @@ def parse_simple(tokens):
 
         if token == "<":
             filename = tokens[i+1]
-            simple_cmd["stdin"] = filename
+            simple_cmd["stdin"] = {"file": filename}
             i += 2
             continue
 
