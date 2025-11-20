@@ -5,8 +5,10 @@ from src.execution.executor_simple import exec_simple
 from src.cmd_built_in.cd import cd
 from src.execution.exec_pipeline import exec_pipe
 import os
-
 import sys
+
+BLUE = "\033[94m"
+RESET = "\033[0m"
 
 def handle_builtin(cmd):
 
@@ -30,7 +32,7 @@ def handle_builtin(cmd):
 
 def main():
     while True:
-        PROMPT = f"{os.getcwd()} "
+        PROMPT = f"{BLUE}{os.getcwd()}{RESET}$ "
         try:
             line = input(PROMPT)
         except EOFError:
