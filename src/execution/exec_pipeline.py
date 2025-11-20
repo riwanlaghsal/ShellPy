@@ -30,6 +30,11 @@ def exec_pipe(pipe):
                 prev_stdout = proc.stdout
             except FileNotFoundError:
                 print(f"Commande introuvable : {cmd['cmd']}", file=sys.stderr)
+            finally:
+                if stdin and not stdin.closed():
+                    stdin.close()
+                if stdout and not stdout.closed():
+                    stdout.close()
 
     for proc in processus:
         proc.wait()
