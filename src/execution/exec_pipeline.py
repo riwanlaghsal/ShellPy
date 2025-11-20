@@ -1,8 +1,8 @@
 import subprocess
 import sys
 
-from redir import handle_redir
-from executor_simple import exec_simple
+from src.execution.redir import handle_redir
+from src.execution.executor_simple import exec_simple
 
 def exec_pipe(pipe):
     processus = []
