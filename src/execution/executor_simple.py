@@ -32,7 +32,7 @@ def exec_simple(cmd_simple):
         except FileNotFoundError:
             print("Erreur : commande introuvable", file=sys.stderr)
         finally:
-            if stdin and not stdin.closed():
+            if stdin:
                 stdin.close()
-            if stdout and not stdout.closed():
+            if stdout:
                 stdout.close()
