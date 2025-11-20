@@ -3,15 +3,14 @@ from src.parsing.parser import parse
 from src.parsing.expand_var import expand_var
 from src.execution.executor_simple import exec_simple
 from src.cmd_built_in.cd import cd
+from src.execution.exec_pipeline import exec_pipe
 
 import sys
 
 PROMPT = "ShellPy$ "
 
 def handle_builtin(cmd):
-    """
-    Gère les commandes internes (cd, exit).
-    """
+
     if cmd["type"] != "command":
         return False
 
@@ -45,28 +44,19 @@ def main():
         if not line.strip():
             continue
 
-        # 1) Tokenisation
         tokens = tokenizer(line)
 
-        # 2) Parsing
         cmd = parse(tokens)
 
-        # 3) Expansion variables ($HOME ...)
-        # Dans ton code, expand_var fonctionne sur les tokens, donc :
-        if isinstance(cmd, dict) and "cmd" in cmd:
-            new_tokens = expand_var([cmd["cmd"]] + cmd["args"])
-            cmd["cmd"] = new_tokens[0]
-            cmd["args"] = new_tokens[1:]
-
-        # 4) Builtins
         if handle_builtin(cmd):
             continue
-
-        # 5) Exécution des commandes externes
-        try:
-            exec_simple(cmd)
-        except Exception as e:
-            print("Erreur d'exécution :", e)
+        if (cmd["type"] == "command"):
+            try:
+                exec_simple(cmd)
+            except Exception as e:
+                print("Erreur d'exécution :", e)
+        else:
+            exec_pipe(cmd)
 
 
 if __name__ == "__main__":
