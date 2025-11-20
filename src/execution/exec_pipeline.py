@@ -15,7 +15,7 @@ def exec_pipe(pipe):
         if prev_stdout:
             stdin = prev_stdout
 
-        if i < len(pipe["commands"] - 1):
+        if i < len(pipe["commands"]) - 1:
             stdout_pipe = subprocess.PIPE
         else:
             stdout_pipe = stdout
