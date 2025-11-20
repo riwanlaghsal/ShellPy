@@ -1,6 +1,6 @@
-# from ShellPy.src.cmd_built_in.cd import cd
+from src.cmd_built_in.cd import cd
 import subprocess
-from redir import handle_redir
+from src.execution.redir import handle_redir
 import os
 import sys
 
@@ -31,14 +31,3 @@ def exec_simple(cmd_simple):
             proc.wait()
         except FileNotFoundError:
             print("Erreur : commande introuvable", file=sys.stderr)
-
-simple_cmd = {
-    "type": "command",
-    "cmd": "cat",
-    "args": [],
-    "stdin": {"file": "test"},
-    "stdout": None,
-    "background": False
-}
-exec_simple(simple_cmd)
-# print(os.getcwd())

@@ -1,4 +1,4 @@
-from ShellPy.src.parsing.tokenizer import tokenizer
+from src.parsing.tokenizer import tokenizer
 
 def parse_simple(tokens):
     simple_cmd = {
