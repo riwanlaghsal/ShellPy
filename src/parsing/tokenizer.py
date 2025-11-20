@@ -1,6 +1,6 @@
 import shlex
 import os
-from expand_var import expand_var
+from src.parsing.expand_var import expand_var
 
 def tokenizer(line):
     tokens = shlex.split(line)
