@@ -5,10 +5,14 @@ from src.execution.executor_simple import exec_simple
 from src.cmd_built_in.cd import cd
 from src.execution.exec_pipeline import exec_pipe
 import os
-
 import sys
 
+
 # POUR L'INSTANT ON GERE LES BUILTINS ICI ON SUPPRIMERA CEUX DES EXEC ET ON DEPLACERA CELUI LA DANS UN FICHIER UTILS
+
+BLUE = "\033[94m"
+RESET = "\033[0m"
+
 def handle_builtin(cmd):
 
     if cmd["type"] != "command":
@@ -31,7 +35,7 @@ def handle_builtin(cmd):
 
 def main():
     while True:
-        PROMPT = f"{os.getcwd()} "
+        PROMPT = f"{BLUE}{os.getcwd()}{RESET}$ "
         try:
             line = input(PROMPT)
         except EOFError:
