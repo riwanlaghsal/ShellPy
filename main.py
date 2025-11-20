@@ -4,10 +4,11 @@ from src.parsing.expand_var import expand_var
 from src.execution.executor_simple import exec_simple
 from src.cmd_built_in.cd import cd
 from src.execution.exec_pipeline import exec_pipe
+import os
 
 import sys
 
-PROMPT = "ShellPy$ "
+PROMPT = f"{os.getcwd()} "
 
 def handle_builtin(cmd):
 
@@ -18,7 +19,6 @@ def handle_builtin(cmd):
         return False
 
     if cmd["cmd"] == "cd":
-        # cd argument
         arg = cmd["args"][0] if cmd["args"] else None
         cd(arg)
         return True
@@ -56,8 +56,10 @@ def main():
             except Exception as e:
                 print("Erreur d'exécution :", e)
         else:
-            exec_pipe(cmd)
-
+            try:
+                exec_pipe(cmd)
+            except Exception as e:
+                print("Erreur :", e)
 
 if __name__ == "__main__":
     main()
