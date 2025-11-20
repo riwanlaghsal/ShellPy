@@ -8,8 +8,6 @@ import os
 
 import sys
 
-PROMPT = f"{os.getcwd()} "
-
 def handle_builtin(cmd):
 
     if cmd["type"] != "command":
@@ -32,6 +30,7 @@ def handle_builtin(cmd):
 
 def main():
     while True:
+        PROMPT = f"{os.getcwd()} "
         try:
             line = input(PROMPT)
         except EOFError:
