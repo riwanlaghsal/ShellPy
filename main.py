@@ -8,6 +8,7 @@ import os
 
 import sys
 
+# POUR L'INSTANT ON GERE LES BUILTINS ICI ON SUPPRIMERA CEUX DES EXEC ET ON DEPLACERA CELUI LA DANS UN FICHIER UTILS
 def handle_builtin(cmd):
 
     if cmd["type"] != "command":
