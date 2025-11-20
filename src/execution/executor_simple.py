@@ -31,3 +31,8 @@ def exec_simple(cmd_simple):
             proc.wait()
         except FileNotFoundError:
             print("Erreur : commande introuvable", file=sys.stderr)
+        finally:
+            if stdin and not stdin.closed():
+                stdin.close()
+            if stdout and not stdout.closed():
+                stdout.close()
