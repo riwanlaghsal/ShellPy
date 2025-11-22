@@ -14,9 +14,10 @@ def parse_simple(tokens):
         simple_cmd["background"] = True
         tokens = tokens[:-1]
 
-    simple_cmd["cmd"] = tokens[0]
-    i = 1
+    if tokens[0] in ['>', '>>', '<'] and len(tokens) > 2:
+        simple_cmd["cmd"] = tokens[2]
 
+    i = 0
     while i < len(tokens):
         token = tokens[i]
 
@@ -36,6 +37,10 @@ def parse_simple(tokens):
             filename = tokens[i+1]
             simple_cmd["stdin"] = {"file": filename}
             i += 2
+            continue
+
+        if token == simple_cmd["cmd"]:
+            i += 1
             continue
 
         simple_cmd["args"].append(token)
@@ -80,6 +85,8 @@ def parse(tokens):
     else:
         return parse_simple(tokens)
 
-
+# line = "< salut cat"
+# tokens = tokenizer(line)
+# print(parse_simple(tokens))
 
 
