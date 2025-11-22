@@ -16,8 +16,11 @@ def parse_simple(tokens):
 
     if tokens[0] in ['>', '>>', '<'] and len(tokens) > 2:
         simple_cmd["cmd"] = tokens[2]
+        i = 0
+    else:
+        simple_cmd["cmd"] = tokens[0]
+        i = 1
 
-    i = 0
     while i < len(tokens):
         token = tokens[i]
 
