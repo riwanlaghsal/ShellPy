@@ -15,7 +15,10 @@ def parse_simple(tokens):
         tokens = tokens[:-1]
 
     if tokens[0] in ['>', '>>', '<'] and len(tokens) > 2:
-        simple_cmd["cmd"] = tokens[2]
+        i = 2
+        while (tokens[i] in ['>', ">>", '<']):
+            i += 2
+        simple_cmd["cmd"] = tokens[i]
         i = 0
     else:
         simple_cmd["cmd"] = tokens[0]
@@ -88,7 +91,7 @@ def parse(tokens):
     else:
         return parse_simple(tokens)
 
-# line = "< salut cat"
+# line = "> b >> c echo hey"
 # tokens = tokenizer(line)
 # print(parse_simple(tokens))
 
