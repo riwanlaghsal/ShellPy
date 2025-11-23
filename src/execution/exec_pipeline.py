@@ -9,7 +9,9 @@ def exec_pipe(pipe):
     prev_stdout = None
     stdout_pipe = None
     built_in = ["cd", "if", "for"]
-
+    if len(pipe["commands"]) ==  1:
+        print("Erreur : une commande ne peut pas finir par un pipe", file=sys.stderr)
+        return -1
     for i, cmd in enumerate(pipe["commands"]):
         stdin, stdout = handle_redir(cmd)
         if prev_stdout:
