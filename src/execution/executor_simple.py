@@ -30,7 +30,7 @@ def exec_simple(cmd_simple):
             proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
             proc.wait()
         except FileNotFoundError:
-            print("Erreur : commande introuvable", file=sys.stderr)
+            print(f"Erreur : commande '{cmd_simple['cmd']}' introuvable", file=sys.stderr)
         finally:
             if stdin:
                 stdin.close()
