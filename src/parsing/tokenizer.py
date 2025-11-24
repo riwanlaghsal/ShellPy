@@ -9,7 +9,7 @@ def put_alert(line):
     return re.sub(r"'([^']*\$[^']*)'", lambda m: ALERT_TAG + m.group(1) + ALERT_TAG, line)
 
 def restore_alert(tokens):
-    return [t.replace(ALERT_TAG, "$") for t in tokens]
+    return [t.replace(ALERT_TAG, "'") for t in tokens]
 
 
 def tokenizer(line):
@@ -17,9 +17,9 @@ def tokenizer(line):
     line = re.sub(r'(>>|>|<)', r' \1 ', line)
     line = put_alert(line)
     tokens = shlex.split(line)
-    print(tokens)
+    # print(tokens)
     tokens = restore_alert(tokens)
     return expand_var(tokens)
 
-line = "echo bjr>>test.txt>fichier|ls '$name'"
-print(tokenizer(line))
+# line = "echo bjr>>test.txt>fichier|ls '$name'"
+# print(tokenizer(line))
