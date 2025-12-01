@@ -1,4 +1,4 @@
-from main import handle_builtin
+from src.utils.handle_builtins import handle_builtin
 from src.cmd_built_in.cd import cd
 import subprocess
 from src.execution.redir import handle_redir
