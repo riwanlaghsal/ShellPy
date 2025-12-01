@@ -1,3 +1,4 @@
+from main import handle_builtin
 from src.cmd_built_in.cd import cd
 import subprocess
 from src.execution.redir import handle_redir
@@ -10,7 +11,7 @@ def get_path(cmd_simple):
     return path
 
 def exec_simple(cmd_simple):
-    built_in = ["cd", "if", "for"]
+    built_in = ["cd", "if", "for", "exit"]
     cmd_built_in = None
 
     stdin, stdout = handle_redir(cmd_simple)
@@ -19,11 +20,7 @@ def exec_simple(cmd_simple):
     commande = [cmd_simple["cmd"]] + cmd_simple["args"]
 
     if cmd_simple["cmd"] in built_in:
-        if (cmd_simple["cmd"] == "cd"):
-            path = get_path(cmd_simple)
-            cd(path)
-        if (cmd_simple["cmd"] == "if"):
-            cmd_built_in = ["python3", "../cmd_built_in/if.py"] + cmd_simple["args"]
+        return handle_builtin(cmd_simple)
 
     else:
         try:

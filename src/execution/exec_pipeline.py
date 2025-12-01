@@ -8,7 +8,7 @@ def exec_pipe(pipe):
     processus = []
     prev_stdout = None
     stdout_pipe = None
-    built_in = ["cd", "if", "for"]
+    built_in = ["cd", "if", "for", "exit"]
     if len(pipe["commands"]) ==  1:
         print("Erreur : une commande ne peut pas finir par un pipe", file=sys.stderr)
         return -1
