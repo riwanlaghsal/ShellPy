@@ -1,6 +1,6 @@
 import os
 
-def func_if(condition_type, condition1, condition2, negation):
+def condition_check(condition_type, condition1, condition2=None):
 
     #tests sur les repertoires
     if condition_type == "-e":              #si le repertoire existe
