@@ -3,15 +3,18 @@ import sys
 
 from src.execution.redir import handle_redir
 from src.execution.executor_simple import exec_simple
+from src.utils.shell_state import shell_state
 
 def exec_pipe(pipe):
     processus = []
     prev_stdout = None
     stdout_pipe = None
     built_in = ["cd", "if", "for", "exit"]
+
     if len(pipe["commands"]) ==  1:
         print("Erreur : une commande ne peut pas finir par un pipe", file=sys.stderr)
         return -1
+
     for i, cmd in enumerate(pipe["commands"]):
         stdin, stdout = handle_redir(cmd)
         if prev_stdout:
@@ -40,5 +43,6 @@ def exec_pipe(pipe):
 
     for proc in processus:
         proc.wait()
+        shell_state["?"] = proc.returncode
 
 
