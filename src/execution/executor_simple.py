@@ -9,7 +9,7 @@ from src.utils.users_vars import is_affect, user_vars
 
 
 def exec_simple(cmd_simple):
-    built_in = ["cd", "if", "for", "exit"]
+    built_in = ["cd", "if", "for", "exit", "unset"]
 
     if is_affect(cmd_simple):
         var, val = cmd_simple["cmd"].split("=", 1)

@@ -1,5 +1,6 @@
 import sys
 from src.cmd_built_in.cd import cd
+from src.cmd_built_in.unset import unset
 from src.utils.shell_state import shell_state
 
 def handle_builtin(cmd):
@@ -20,5 +21,10 @@ def handle_builtin(cmd):
         code = int(cmd["args"][0]) if cmd["args"] else 0
         shell_state["?"] = code
         sys.exit(code)
+
+    if cmd["cmd"] == "unset":
+        arg = cmd["args"][0] if cmd["args"] else None
+        unset(arg)
+        return True
 
     return False
