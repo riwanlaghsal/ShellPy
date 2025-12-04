@@ -5,19 +5,23 @@ from src.execution.redir import handle_redir
 from src.utils.shell_state import shell_state
 import os
 import sys
+from src.utils.users_vars import is_affect, user_vars
 
-def get_path(cmd_simple):
-    path = str(cmd_simple["args"])
-    path = path[2:-2]
-    return path
 
 def exec_simple(cmd_simple):
     built_in = ["cd", "if", "for", "exit"]
+
+    if is_affect(cmd_simple):
+        var, val = cmd_simple["cmd"].split("=", 1)
+        user_vars[var] = val
+        shell_state["?"] = 0
+        return 1
 
     stdin, stdout = handle_redir(cmd_simple)
     if stdin == -1:
         shell_state["?"] = -1
         return -1
+
     commande = [cmd_simple["cmd"]] + cmd_simple["args"]
 
     if cmd_simple["cmd"] in built_in:

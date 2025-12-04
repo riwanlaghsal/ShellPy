@@ -1,5 +1,6 @@
+from src.utils.shell_state import shell_state
+
 user_vars = {
-    "yo": "salut"
 }
 
 def is_user_var(var_name):
@@ -7,4 +8,11 @@ def is_user_var(var_name):
 
 def get_users_vars(var_name):
     return str(user_vars[var_name])
+
+def is_affect(cmd):
+    if "=" in cmd["cmd"] and not cmd["args"]:
+            return 1
+    return 0
+
+
 

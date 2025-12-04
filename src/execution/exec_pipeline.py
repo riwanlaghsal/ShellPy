@@ -4,6 +4,8 @@ import sys
 from src.execution.redir import handle_redir
 from src.execution.executor_simple import exec_simple
 from src.utils.shell_state import shell_state
+from src.utils.users_vars import is_affect
+
 
 def exec_pipe(pipe):
     processus = []
@@ -16,6 +18,9 @@ def exec_pipe(pipe):
         return -1
 
     for i, cmd in enumerate(pipe["commands"]):
+        if is_affect(cmd):
+            continue #ignorer les affect de var comme bash
+
         stdin, stdout = handle_redir(cmd)
         if prev_stdout:
             stdin = prev_stdout

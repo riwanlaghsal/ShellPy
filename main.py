@@ -28,8 +28,6 @@ def main():
 
         cmd = parse(tokens)
 
-        # if handle_builtin(cmd): executor qui gere handle_builtin
-            # continue
         if cmd["type"] == "command":
             try:
                 exec_simple(cmd)
