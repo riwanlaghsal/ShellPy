@@ -1,4 +1,6 @@
 import os
+import sys
+
 
 def condition_check(condition_type, condition1, condition2=None):
 
@@ -41,3 +43,18 @@ def condition_check(condition_type, condition1, condition2=None):
         return str(condition1) <= str(condition2)
 
     #manque la negation et les combinaisons logiques
+
+
+def builtin_if(cmd_struct):
+
+    args = cmd_struct["args"]
+    try:
+        index_then = args.index("then")
+        index_fi = args.index("fi")
+    except ValueError:
+        print("Erreur syntaxe: 'then' ou 'fi' manquant",file=sys.stderr)
+        return False
+
+    index_else = None
+    if "else" in args:
+        index_else = args.index("else")
