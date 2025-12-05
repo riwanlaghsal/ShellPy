@@ -3,14 +3,14 @@ from src.parsing.parser import parse
 from src.execution.executor_simple import exec_simple
 from src.execution.exec_pipeline import exec_pipe
 from src.utils.background import background_processes
-from src.utils.handle_builtins import handle_builtin
+
 import os
+import threading
 
 BLUE = "\033[94m"
 RESET = "\033[0m"
 
-
-def main():
+def monitor_background():
     while True:
         for p in background_processes[:]:
             state = p.poll()
@@ -18,6 +18,9 @@ def main():
                 print(f"[{p.pid}] finish (status {state})")
                 background_processes.remove(p)
 
+def main():
+    threading.Thread(target=monitor_background, daemon=True).start()
+    while True:
         PROMPT = f"{BLUE}{os.getcwd()}{RESET}$ "
         try:
             line = input(PROMPT)
