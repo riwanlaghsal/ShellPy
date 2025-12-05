@@ -15,7 +15,7 @@ def monitor_background():
         for p in background_processes[:]:
             state = p.poll()
             if state is not None:
-                print(f"[{p.pid}] finish (status {state})")
+                print(f"\n[{p.pid}] finish (status {state})")
                 background_processes.remove(p)
 
 def main():
