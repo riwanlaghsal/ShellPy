@@ -10,17 +10,13 @@ import threading
 BLUE = "\033[94m"
 RESET = "\033[0m"
 
-def monitor_background():
+def main():
     while True:
         for p in background_processes[:]:
             state = p.poll()
             if state is not None:
-                print(f"\n[{p.pid}] finish (status {state})")
+                print(f"[{p.pid}] finish (status {state})")
                 background_processes.remove(p)
-
-def main():
-    threading.Thread(target=monitor_background, daemon=True).start()
-    while True:
         PROMPT = f"{BLUE}{os.getcwd()}{RESET}$ "
         try:
             line = input(PROMPT)
