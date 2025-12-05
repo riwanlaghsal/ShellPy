@@ -1,3 +1,4 @@
+from src.utils.background import background_processes
 from src.utils.handle_builtins import handle_builtin
 from src.cmd_built_in.cd import cd
 import subprocess
@@ -31,6 +32,7 @@ def exec_simple(cmd_simple):
         try:
             if cmd_simple["background"]:
                 proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
+                background_processes.append(proc)
                 print(f"[{proc.pid}] {' '.join(commande)} is running in background")
             else:
                 proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)

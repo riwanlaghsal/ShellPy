@@ -3,6 +3,7 @@ import sys
 
 from src.execution.redir import handle_redir
 from src.execution.executor_simple import exec_simple
+from src.utils.background import background_processes
 from src.utils.shell_state import shell_state
 from src.utils.users_vars import is_affect
 
@@ -48,6 +49,7 @@ def exec_pipe(pipe):
 
     if pipe["background"]:
         print(f"[{processus[0].pid}] pipeline is running in background") #bash recupere le premier pid du processus lancé
+        background_processes.append(processus[0])
     else:
         for proc in processus:
             proc.wait()
