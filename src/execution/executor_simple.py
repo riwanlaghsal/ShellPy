@@ -29,9 +29,13 @@ def exec_simple(cmd_simple):
 
     else:
         try:
-            proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
-            proc.wait()
-            shell_state["?"] = proc.returncode
+            if cmd_simple["background"]:
+                proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
+                print(f"[{proc.pid}] {' '.join(commande)} is running in background")
+            else:
+                proc = subprocess.Popen(commande, stdin=stdin, stdout=stdout)
+                proc.wait()
+                shell_state["?"] = proc.returncode
         except FileNotFoundError:
             print(f"Erreur : commande '{cmd_simple['cmd']}' introuvable", file=sys.stderr)
         finally:

@@ -46,8 +46,11 @@ def exec_pipe(pipe):
                 if stdout:
                     stdout.close()
 
-    for proc in processus:
-        proc.wait()
-        shell_state["?"] = proc.returncode
+    if pipe["background"]:
+        print(f"[{processus[0].pid}] pipeline is running in background") #bash recupere le premier pid du processus lancé
+    else:
+        for proc in processus:
+            proc.wait()
+            shell_state["?"] = proc.returncode
 
 
