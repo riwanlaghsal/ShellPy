@@ -22,7 +22,7 @@ def main():
                 background_processes.remove(p)
 
         current_dir = os.path.basename(os.getcwd())
-        PROMPT = f"{PINK}ShellPy:/{current_dir}{RESET}>$ "
+        PROMPT = f"{PINK}ShellPy:/{RESET}{current_dir}>$ "
         try:
             line = input(PROMPT)
         except EOFError:
