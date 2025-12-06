@@ -9,7 +9,7 @@ import threading
 
 from src.utils.print_screen import print_screen
 
-BLUE = "\033[94m"
+PINK = "\033[95m"
 RESET = "\033[0m"
 
 def main():
@@ -20,7 +20,9 @@ def main():
             if state is not None:
                 print(f"[{p.pid}] finish (status {state})")
                 background_processes.remove(p)
-        PROMPT = f"{BLUE}{os.getcwd()}{RESET}$ "
+
+        current_dir = os.path.basename(os.getcwd())
+        PROMPT = f"{PINK}ShellPy:/{current_dir}{RESET}>$ "
         try:
             line = input(PROMPT)
         except EOFError:
