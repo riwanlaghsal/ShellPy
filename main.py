@@ -7,10 +7,13 @@ from src.utils.background import background_processes
 import os
 import threading
 
+from src.utils.print_screen import print_screen
+
 BLUE = "\033[94m"
 RESET = "\033[0m"
 
 def main():
+    print_screen()
     while True:
         for p in background_processes[:]:
             state = p.poll()
