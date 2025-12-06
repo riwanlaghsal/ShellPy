@@ -2,6 +2,7 @@ import sys
 from src.cmd_built_in.cd import cd
 from src.cmd_built_in.unset import unset
 from src.utils.shell_state import shell_state
+from src.cmd_built_in.func_if import builtin_if
 
 def handle_builtin(cmd):
 
@@ -16,6 +17,9 @@ def handle_builtin(cmd):
         code = cd(arg)
         shell_state["?"] = code
         return True
+
+    if cmd["cmd"] == "if":
+        return buitin_if(cmd)
 
     if cmd["cmd"] == "exit":
         code = int(cmd["args"][0]) if cmd["args"] else 0
