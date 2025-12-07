@@ -5,6 +5,7 @@ from src.execution.exec_pipeline import exec_pipe
 from src.utils.background import background_processes
 
 import os
+import readline
 import threading
 
 from src.utils.print_screen import print_screen
