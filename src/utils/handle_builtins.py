@@ -31,4 +31,7 @@ def handle_builtin(cmd):
         unset(arg)
         return True
 
+    if cmd["cmd"] == "help":
+        help()
+
     return False

@@ -11,6 +11,7 @@ import threading
 from src.utils.print_screen import print_screen
 
 PINK = "\033[95m"
+BLUE = "\033[94m"
 RESET = "\033[0m"
 
 def main():
@@ -23,7 +24,7 @@ def main():
                 background_processes.remove(p)
 
         current_dir = os.path.basename(os.getcwd())
-        PROMPT = f"{PINK}ShellPy:/{RESET}{current_dir}$ "
+        PROMPT = f"{PINK}ShellPy:/{BLUE}{current_dir}$ {RESET}"
         try:
             line = input(PROMPT)
         except EOFError:
