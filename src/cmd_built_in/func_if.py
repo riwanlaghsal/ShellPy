@@ -71,8 +71,8 @@ def builtin_if(cmd_struct):
     elif len(cond) == 2 and cond[0].startswith("-"):
         is_true = condition_check(cond[0], cond[1])
     else:
-        if cond[0] == True: is_true = True
-        elif cond [0] == False: is_true = False
+        if cond[0].lower() == "true": is_true = True
+        elif cond[0].lower() == "false": is_true = False
         else:
             print(f"Erreur: condition mal formée : {cond}", file=sys.stderr)
             return False
@@ -80,7 +80,7 @@ def builtin_if(cmd_struct):
     tokens_to_exec = []
 
     if is_true:
-        limit = index_then if index_then else index_else
+        limit = index_else if index_else is not None else index_fi
         tokens_to_exec = args[index_then + 1 : limit]
     else:
         if index_else:
