@@ -19,7 +19,7 @@ def handle_builtin(cmd):
         return True
 
     if cmd["cmd"] == "if":
-        return buitin_if(cmd)
+        return builtin_if(cmd)
 
     if cmd["cmd"] == "exit":
         code = int(cmd["args"][0]) if cmd["args"] else 0
