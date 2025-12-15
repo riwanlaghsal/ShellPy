@@ -14,7 +14,7 @@ def restore_alert(tokens):
 
 def tokenizer(line):
     line = line.replace('|', ' | ')
-    line = re.sub(r'(>>|>|<)', r' \1 ', line)
+    line = re.sub(r'(>>|>|<|;)', r' \1 ', line)
     line = put_alert(line)
     tokens = shlex.split(line)
     # print(tokens)
