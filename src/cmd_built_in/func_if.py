@@ -101,7 +101,7 @@ def builtin_if(cmd_struct):
     if handle_builtin(parse_if):
         return True
 
-    if parse_if["type"] == "commande":
+    if parse_if["type"] == "command":
         exec_simple(parse_if)
     else:
         exec_pipe(parse_if)
