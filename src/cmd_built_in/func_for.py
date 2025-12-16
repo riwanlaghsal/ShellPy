@@ -49,8 +49,6 @@ def builtin_for(cmd_struct):
                 current_tokens.append(token)
 
         parsed_commands = parse(current_tokens)
-        print(f"line to exec: {line_to_exec}")
-        print(f"parsed_commands: {parsed_commands}")
 
         if isinstance(parsed_commands, dict):
             parsed_commands = [parsed_commands]
