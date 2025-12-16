@@ -11,7 +11,14 @@ def put_alert(line):
 def restore_alert(tokens):
     return [t.replace(ALERT_TAG, "") for t in tokens]
 
-
+def is_for(line):
+    stripped_line = line.strip()
+    if not stripped_line:
+        return 0
+    parts = stripped_line.split()
+    if parts and parts[] == "for":
+        return 1
+    return 0
 
 def tokenizer(line):
     line = line.replace('|', ' | ')
