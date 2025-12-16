@@ -7,7 +7,7 @@ from src.utils.shell_state import shell_state
 import os
 import sys
 from src.utils.users_vars import is_affect, user_vars
-from ShellPy.src.parsing.expand_var import expand_var
+from src.parsing.expand_var import expand_var
 
 
 def exec_simple(cmd_simple):
