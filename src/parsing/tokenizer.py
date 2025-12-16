@@ -1,6 +1,8 @@
 import shlex
 import os
 import re
+from operator import is_not
+
 from src.parsing.expand_var import expand_var
 
 
@@ -26,7 +28,8 @@ def tokenizer(line):
     line = put_alert(line)
     tokens = shlex.split(line)
     # print(tokens)
-    tokens = expand_var(tokens)
+    if is_for(tokens[0]) == 0:
+        tokens = expand_var(tokens)
     return restore_alert(tokens)
 
 # line = "echo bjr>>test.txt>fichier|ls '$name'"
