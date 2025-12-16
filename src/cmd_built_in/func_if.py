@@ -30,20 +30,33 @@ def condition_check(condition_type, condition1, condition2=None):
         return str(condition1) != str(condition2)
 
     #tests numeriques
-    elif condition_type == "-eq":
-        return str(condition1) == str(condition2)
-    elif condition_type == "-ne":
-        return str(condition1) != str(condition2)
-    elif condition_type == "-gt":
-        return str(condition1) > str(condition2)
-    elif condition_type == "-lt":
-        return str(condition1) < str(condition2)
-    elif condition_type == "-ge":
-        return str(condition1) >= str(condition2)
-    elif condition_type == "-le":
-        return str(condition1) <= str(condition2)
+    elif condition_type in ["-eq", "-ne", "-gt", "-lt", "-ge", "-le"]:
+        try:
+            v1 = int(condition1)
+            v2 = int(condition2)
+        except ValueError:
+            print(f"Erreur syntaxe: entier attendu pour {condition_type}", file=sys.stderr)
+            return False
 
-    #manque la negation et les combinaisons logiques
+        if condition_type == "-eq":
+            return v1 == v2
+        elif condition_type == "-ne":
+            return v1 != v2
+        elif condition_type == "-gt":
+            return v1 > v2
+        elif condition_type == "-lt":
+            return v1 < v2
+        elif condition_type == "-ge":
+            return v1 >= v2
+        elif condition_type == "-le":
+            return v1 <= v2
+
+    elif condition_type == "!":
+        return not condition1
+    elif condition_type == "-a":
+        return condition1 and condition2
+    elif condition_type == "-o":
+        return condition1 or condition2
 
 
 def builtin_if(cmd_struct):
@@ -66,6 +79,7 @@ def builtin_if(cmd_struct):
         return False
 
     is_true = False
+
     if len(cond) == 3:
         is_true = condition_check(cond[1], cond[0], cond[2])
     elif len(cond) == 2 and cond[0].startswith("-"):
@@ -98,12 +112,13 @@ def builtin_if(cmd_struct):
 
     parse_if = parse(tokens_to_exec)
 
-    if handle_builtin(parse_if):
-        return True
+    if isinstance(parse_if, dict):
+        parse_if = [parse_if]
 
-    if parse_if["type"] == "command":
-        exec_simple(parse_if)
-    else:
-        exec_pipe(parse_if)
+    for cmd in parse_if:
+        if cmd["type"] == "command":
+            exec_simple(cmd)
+        else:
+            exec_pipe(cmd)
 
     return True
