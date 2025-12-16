@@ -50,7 +50,6 @@ def builtin_for(cmd_struct):
         if isinstance(parsed_commands, dict):
             parsed_commands = [parsed_commands]
 
-        print(f"parsed_commands: {parsed_commands}")
         for cmd in parsed_commands:
             if cmd["type"] == "command":
                 exec_simple(cmd)
