@@ -12,12 +12,14 @@ def restore_alert(tokens):
     return [t.replace(ALERT_TAG, "") for t in tokens]
 
 
+
 def tokenizer(line):
     line = line.replace('|', ' | ')
     line = re.sub(r'(>>|>|<|;)', r' \1 ', line)
     line = put_alert(line)
     tokens = shlex.split(line)
     # print(tokens)
+    tokens = expand_var(tokens)
     return restore_alert(tokens)
 
 # line = "echo bjr>>test.txt>fichier|ls '$name'"

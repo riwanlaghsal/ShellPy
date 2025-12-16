@@ -19,9 +19,6 @@ def exec_simple(cmd_simple):
         shell_state["?"] = 0
         return 1
 
-    if cmd_simple["cmd"] != "for":
-        cmd_simple["args"] = expand_var(cmd_simple["args"])
-
     stdin, stdout = handle_redir(cmd_simple)
     if stdin == -1:
         shell_state["?"] = -1
