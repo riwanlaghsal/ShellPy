@@ -56,8 +56,8 @@ def builtin_for(cmd_struct):
             parsed_commands = [parsed_commands]
 
         for cmd in parsed_commands:
-            if cmd["type"] == "simple":
+            if cmd["type"] == "command":
                 exec_simple(cmd)
-            elif cmd["type"] == "pipe":
+            else:
                 exec_pipe(cmd)
     return True
