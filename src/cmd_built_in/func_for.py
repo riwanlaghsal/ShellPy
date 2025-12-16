@@ -26,7 +26,7 @@ def builtin_for(cmd_struct):
     body = args[index_do+1:index_done]
 
     from src.execution.executor_simple import exec_simple
-    from src.execution.execution_pipeline import exec_pipe
+    from src.execution.exec_pipeline import exec_pipe
     from src.utils.handle_builtins import handle_builtin
 
     if body and body[0] == ";":
