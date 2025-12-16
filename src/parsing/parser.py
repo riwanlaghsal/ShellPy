@@ -86,6 +86,10 @@ def parse_pipeline(tokens):
 
 
 def parse(tokens):
+
+    if tokens and tokens[0] in ["for", "if"]:
+        return parse_simple(tokens)
+
     if "|" in tokens:
         return parse_pipeline(tokens)
     else:
