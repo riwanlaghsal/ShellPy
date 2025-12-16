@@ -6,7 +6,6 @@ def builtin_for(cmd_struct):
     var_name = args[0]
     target_var = f"${var_name}"
 
-    print(f"args: {args}")
     if len(args) < 4:
         print("Erreur syntaxe: for <var> in ... do ... done", file=sys.stderr)
         return False
