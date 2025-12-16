@@ -39,10 +39,8 @@ def builtin_for(cmd_struct):
     for val in values:
         current_tokens = []
         for token in body:
-            if token == target_var:
-                current_tokens.append(val)
-            else:
-                current_tokens.append(token)
+            new_token = token.replace(target_var, val)
+            current_tokens.append(new_token)
 
         parsed_commands = parse(current_tokens)
 
