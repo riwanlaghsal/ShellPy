@@ -7,6 +7,7 @@ from src.utils.shell_state import shell_state
 import os
 import sys
 from src.utils.users_vars import is_affect, user_vars
+from ShellPy.src.parsing.expand_var import expand_var
 
 
 def exec_simple(cmd_simple):
@@ -17,6 +18,9 @@ def exec_simple(cmd_simple):
         user_vars[var] = val
         shell_state["?"] = 0
         return 1
+
+    if cmd_simple["cmd"] != "for":
+        cmd_simple["args"] = expand_var(cmd_simple["args"])
 
     stdin, stdout = handle_redir(cmd_simple)
     if stdin == -1:
