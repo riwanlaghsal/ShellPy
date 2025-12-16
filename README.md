@@ -117,20 +117,20 @@ Toutes ces bibliothèques font partie de la bibliothèque standard de Python.
 
 ## 🧱 Structure du projet
 
-├── main.py # Point d'entrée du shell
-├── src
-│ ├── cmd_built_in/ # Commandes internes (cd, if, for, unset, exit, help)
-│ ├── execution/ # Exécution des commandes, redirections, pipelines, background
-│ ├── parsing/ # Analyse syntaxique pour tokenizer et expansion et affectation des variables
-│ └── utils/ # Composants d'état, historique, affichage, gestion builtins
+- ├── main.py # Point d'entrée du shell
+- ├── src
+- │ ├── cmd_built_in/ # Commandes internes (cd, if, for, unset, exit, help)
+- │ ├── execution/ # Exécution des commandes, redirections, pipelines, background
+- │ ├── parsing/ # Analyse syntaxique pour tokenizer et expansion et affectation des variables
+- │ └── utils/ # Composants d'état, historique, affichage, gestion builtins
 
 ---
 
 ## 👥 Répartition du travail
 
-Laghsal Riwan : Parsing, expansion et affectation de variables, execution de pipelines, redirections et background, commandes builtins help et unset, gestions des utils (état du shell, affichage d'écran), vérification d'états des processus dans le main.
-Ilyes Mehnana : Commandes builtins (cd, if, for), execution de commandes simple, gestion des builtins dans utils, boucle principale du main (lire, coordonner et lancer les entrées utilisateurs).
-Travail commun : Dans les fichiers `main.py` et `executor_simple.py`.
+- Laghsal Riwan : Parsing, expansion et affectation de variables, execution de pipelines, redirections et background, commandes builtins help et unset, gestions des utils (état du shell, affichage d'écran), vérification d'états des processus dans le main.
+- Ilyes Mehnana : Commandes builtins (cd, if, for), execution de commandes simple, gestion des builtins dans utils, boucle principale du main (lire, coordonner et lancer les entrées utilisateurs).
+- Travail commun : Dans les fichiers `main.py` et `executor_simple.py`.
 
 | Laghsal Riwan | Mehnana Ilyes |
 |----|----------------|
