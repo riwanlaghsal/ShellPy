@@ -4,6 +4,7 @@ from src.parsing.parser import parse
 def builtin_for(cmd_struct):
     args = cmd_struct["args"]
     var_name = args[0]
+    target_var = f"{var_name}"
 
     if len(args) < 4:
         print("Erreur syntaxe: for <var> in ... do ... done", file=sys.stderr)
@@ -26,3 +27,21 @@ def builtin_for(cmd_struct):
     from src.execution.executor_simple import exec_simple
     from src.execution.execution_pipeline import exec_pipe
     from src.utils.handle_builtins import handle_builtin
+
+    for val in values:
+        current_tokens = []
+        for token in body:
+            if token == target_var:
+                current_tokens.append(val)
+            else:
+                current_tokens.append(token)
+
+        line_to_exec = " ".join(current_tokens)
+        parsed_commands = parse(line_to_exec)
+
+        for cmd in parsed_commands:
+            if cmd["type"] == "simple":
+                exec_simple(cmd)
+            elif cmd["type"] == "pipe":
+                exec_pipe(cmd)
+    return True
