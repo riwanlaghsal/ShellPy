@@ -28,6 +28,14 @@ def builtin_for(cmd_struct):
     from src.execution.execution_pipeline import exec_pipe
     from src.utils.handle_builtins import handle_builtin
 
+    if body and body[0] == ";":
+        body.pop(0)
+    elif body and body[-1] != ";":
+        body.pop()
+
+    if not body:
+        return True
+
     for val in values:
         current_tokens = []
         for token in body:
