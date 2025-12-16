@@ -18,7 +18,6 @@ def tokenizer(line):
     line = put_alert(line)
     tokens = shlex.split(line)
     # print(tokens)
-    tokens = expand_var(tokens)
     return restore_alert(tokens)
 
 # line = "echo bjr>>test.txt>fichier|ls '$name'"
