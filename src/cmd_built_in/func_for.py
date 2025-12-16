@@ -36,9 +36,6 @@ def builtin_for(cmd_struct):
 
     if not body:
         return True
-    print(f"target_var: {target_var}")
-    print(f"valeurs: {values}")
-    print(f"body: {body}")
 
     for val in values:
         current_tokens = []
