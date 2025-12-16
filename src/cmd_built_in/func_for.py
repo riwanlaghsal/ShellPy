@@ -48,8 +48,7 @@ def builtin_for(cmd_struct):
             else:
                 current_tokens.append(token)
 
-        line_to_exec = " ".join(current_tokens)
-        parsed_commands = parse(line_to_exec)
+        parsed_commands = parse(current_tokens)
         print(f"line to exec: {line_to_exec}")
         print(f"parsed_commands: {parsed_commands}")
 
