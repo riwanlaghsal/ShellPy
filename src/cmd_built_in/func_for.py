@@ -6,6 +6,7 @@ def builtin_for(cmd_struct):
     var_name = args[0]
     target_var = f"${var_name}"
 
+    print(f"args: {args}")
     if len(args) < 4:
         print("Erreur syntaxe: for <var> in ... do ... done", file=sys.stderr)
         return False
@@ -35,6 +36,9 @@ def builtin_for(cmd_struct):
 
     if not body:
         return True
+    print(f"target_var: {target_var}")
+    print(f"valeurs: {values}")
+    print(f"body: {body}")
 
     for val in values:
         current_tokens = []
@@ -46,6 +50,7 @@ def builtin_for(cmd_struct):
 
         line_to_exec = " ".join(current_tokens)
         parsed_commands = parse(line_to_exec)
+        print(f"line to exec: {line_to_exec}")
 
         for cmd in parsed_commands:
             if cmd["type"] == "simple":
