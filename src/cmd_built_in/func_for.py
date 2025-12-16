@@ -30,7 +30,7 @@ def builtin_for(cmd_struct):
 
     if body and body[0] == ";":
         body.pop(0)
-    if body and body[-1] != ";":
+    if body and body[-1] == ";":
         body.pop()
 
     if not body:
