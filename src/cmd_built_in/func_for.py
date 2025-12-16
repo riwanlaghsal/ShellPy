@@ -4,7 +4,7 @@ from src.parsing.parser import parse
 def builtin_for(cmd_struct):
     args = cmd_struct["args"]
     var_name = args[0]
-    target_var = f"{var_name}"
+    target_var = f"${var_name}"
 
     if len(args) < 4:
         print("Erreur syntaxe: for <var> in ... do ... done", file=sys.stderr)
@@ -30,7 +30,7 @@ def builtin_for(cmd_struct):
 
     if body and body[0] == ";":
         body.pop(0)
-    elif body and body[-1] != ";":
+    if body and body[-1] != ";":
         body.pop()
 
     if not body:
