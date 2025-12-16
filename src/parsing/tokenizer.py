@@ -16,7 +16,7 @@ def is_for(line):
     if not stripped_line:
         return 0
     parts = stripped_line.split()
-    if parts and parts[] == "for":
+    if parts and parts[0] == "for":
         return 1
     return 0
 
